@@ -259,17 +259,16 @@ static int client_setup (client_t *p)
     if ((p->pfb = fb_init (CLIENT_FB)) == NULL)         exit(1);
     if ((p->pui = ui_init (p->pfb, CLIENT_UI)) == NULL) exit(1);
     // ODROID-M1S (1.5M baud)
-    if ((p->puart = uart_init (CLIENT_UART, 1500000)) == NULL)  exit(1);
-
-    if (p->puart) {
+    if ((p->puart = uart_init (CLIENT_UART, 1500000)) != NULL) {
         if (ptc_grp_init (p->puart, 1)) {
             if (!ptc_func_init (p->puart, 0, PROTOCOL_RX_BYTES, protocol_check, protocol_catch)) {
                 printf ("%s : protocol install error.", __func__);
                 exit(1);
             }
         }
+        return 1;
     }
-    return 1;
+    return 0;
 }
 
 //------------------------------------------------------------------------------
