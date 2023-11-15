@@ -49,6 +49,30 @@ overlays="hktft32"
 overlays="hktft35 sx865x-i2c1"
 ```
 
+### Clone the reopsitory with submodule
+```
+root@odroid:~# git clone --recursive https://github.com/charles-park/JIG.m1s.client
+
+or
+
+root@odroid:~# git clone https://github.com/charles-park/JIG.m1s.client
+root@odroid:~# cd JIG.m1s.client
+root@odroid:~/JIG.m1s.client# git submodule update --init --recursive
+```
+
+### iperf3_odroid client mode install
+```
+root@server:~# git clone httos://github.com/charles-park/iperf3_odroid
+
+root@server:~# cd iperf3_odroid
+
+root@server:~/iperf3_odroid# dpkg -i iperf3_deb/iperf3_3.7-3_arm64.deb
+
+root@server:~/iperf3_odroid# make
+
+root@server:~/iperf3_odroid# make install
+```
+
 ### add root user, ssh root enable (https://www.leafcats.com/176)
 ```
 // root user add
@@ -79,6 +103,7 @@ Type=idle
 
 ### client samba config
 ```
+root@server:~# smbpasswd -a root
 root@server:~# vi /etc/samba/smb.conf
 ```
 ```
@@ -126,17 +151,6 @@ Simple mixer control 'Capture MIC Path',0
 
 // play audio file
 root@server:~# aplay -Dhw:1,0 {audio file} -d {play time}
-```
-
-### Clone the reopsitory with submodule
-```
-root@odroid:~# git clone --recursive https://github.com/charles-park/JIG.m1s.client
-
-or
-
-root@odroid:~# git clone https://github.com/charles-park/JIG.m1s.client
-root@odroid:~# cd JIG.m1s.client
-root@odroid:~/JIG.m1s.client# git submodule update --init --recursive
 ```
 
 ### Overlay root
