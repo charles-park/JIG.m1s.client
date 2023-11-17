@@ -51,6 +51,19 @@ overlays="hktft32"
 [overlay_hktft35]
 overlays="hktft35 sx865x-i2c1"
 ```
+* disable console options
+```
+// Edit the /usr/share/flash-kernel/ubootenv.d/upstream/10-console
+root@odroid:~# vi /usr/share/flash-kernel/ubootenv.d/upstream/10-console
+
+...
+# Default TTY console
+# setenv bootargs "${bootargs} console=tty1 console=ttyS2,1500000"
+...
+
+root@odroid:~# update-bootscript
+
+```
 
 ### Clone the reopsitory with submodule
 ```
