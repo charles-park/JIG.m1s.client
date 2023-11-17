@@ -12,6 +12,9 @@ odroid-m1s client
 
 * Install ubuntu package & python3 module
 ```
+// ubuntu system update
+root@server:~# apt update && apt upgrade -y
+
 // ubuntu package
 root@server:~# apt install samba ssh build-essential python3 python3-pip ethtool net-tools usbutils git i2c-tools vim cups cups-bsd overlayroot nmap
 
@@ -66,7 +69,13 @@ root@server:~# git clone httos://github.com/charles-park/iperf3_odroid
 
 root@server:~# cd iperf3_odroid
 
+// iperf3 deb install
+root@server:~/iperf3_odroid# apt install libiperf0 libsctp1
 root@server:~/iperf3_odroid# dpkg -i iperf3_deb/iperf3_3.7-3_arm64.deb
+
+or
+// iperf3 install
+root@server:~/iperf3_odroid# apt install iperf3
 
 root@server:~/iperf3_odroid# make
 
